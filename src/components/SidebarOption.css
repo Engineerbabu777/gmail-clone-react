@@ -1,0 +1,32 @@
+
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color:#818181;
+}
+
+.sidebar-option > h3{
+   flex:1;
+}
+
+.sidebar-option > p {
+    display: none;
+    font-weight: 300;
+} 
+
+.sidebar-option:hover,
+.sidebar-option:hover > h3,
+.sidebar-option:hover > p {
+    background-color: #fcecec;
+    color:#c04b37;
+    font-weight: 800 !important;
+}
+
+.sidebar-option:hover > p {
+  display: inline;
+}
