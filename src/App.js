@@ -5,6 +5,7 @@ import SIdebar from './components/Sidebar'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Mail from './components/Mail'
 import EmailList from './components/MailList'
+import SendMail from './components/SendMail'
 
 function App () {
   return (
@@ -22,6 +23,8 @@ function App () {
             <Route path='/' exact Component={EmailList} />
           </Routes>
         </div>
+
+        <SendMail />
 
         {/* MIDDLE! */}
       </div>
