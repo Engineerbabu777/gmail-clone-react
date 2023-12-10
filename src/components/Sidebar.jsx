@@ -7,12 +7,26 @@ import { MdOutlineAccessTime } from 'react-icons/md'
 import { IoPaperPlaneOutline, IoDocumentOutline } from 'react-icons/io5'
 import { IoPerson } from 'react-icons/io5'
 import { MdDuo } from 'react-icons/md'
+import {
+  closeSendMessage,
+  openSendMessage,
+  selectMail
+} from '../features/mailSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function SIdebar ({}) {
+  const isSendMessageOpen = useSelector(selectMail)
+  const dispatch = useDispatch();
+
+
   return (
     <>
       <div className='sidebar'>
-        <Button className='sidebar-compose' startIcon={<IoMdAdd size={32} />}>
+        <Button
+          className='sidebar-compose'
+          startIcon={<IoMdAdd size={32} />}
+          onClick={() => isSendMessageOpen ? dispatch(closeSendMessage()) : dispatch(openSendMessage())}
+        >
           Compose
         </Button>
 

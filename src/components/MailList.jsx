@@ -10,8 +10,16 @@ import { FaInbox } from 'react-icons/fa6'
 import { IoIosPricetag } from 'react-icons/io'
 import { IoPeople } from 'react-icons/io5'
 import EmailRow from './EmailRow'
+import { useEffect, useState } from 'react'
+import { useCollection } from 'react-firebase-hooks/firestore'
+import { collection } from 'firebase/firestore'
+import { db } from '../firebase'
 
 export default function EmailList ({}) {
+  const [email, setEmails] = useState([])
+
+  const [values] = useCollection(collection(db, 'emails'))
+
   return (
     <>
       <div className='email-list'>
@@ -54,28 +62,17 @@ export default function EmailList ({}) {
         </div>
 
         <div className='email-list-list'>
-          <EmailRow
-            title={'Twitch'}
-            subject={'Hey Fellow steamer'}
-            description={'This is a test'}
-            id={'78'}
-            time={'10pm'}
-          />
+          {values?.docs?.map(doc => (
+            <EmailRow
+              title={'Title'}
+              subject={doc.data().subject}
+              description={doc.data().message}
+              id={doc.id}
+              time={'10pm'}
+            />
+          ))}
 
-          <EmailRow
-            title={'Twitch'}
-            subject={'Hey Fellow steamer'}
-            description={'This is a test'}
-            id={'78'}
-            time={'10pm'}
-          />
-          <EmailRow
-            title={'Twitch'}
-            subject={'Hey Fellow steamer'}
-            description={'This is a test jdfb jdfbcjdnjnfj djbnjsdnjnsd jsdbjnsd'}
-            id={'78'}
-            time={'10pm'}
-          />
+          
         </div>
       </div>
     </>
