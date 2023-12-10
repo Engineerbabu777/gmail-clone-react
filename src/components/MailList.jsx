@@ -68,7 +68,7 @@ export default function EmailList ({}) {
               subject={doc.data().subject}
               description={doc.data().message}
               id={doc.id}
-              time={'10pm'}
+              time={new Date(doc.data().timestamp?.seconds *1000).toUTCString()}
             />
           ))}
 

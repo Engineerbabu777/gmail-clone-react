@@ -14,8 +14,13 @@ import { TbArrowsMoveVertical } from 'react-icons/tb'
 
 import { IconButton } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+
+import {useSelector} from 'react-redux';
+
 export default function Mail ({}) {
   const navigate = useNavigate()
+
+  const selectedMail = useSelector(state => state.mail.selectedMail)
 
   return (
     <>
@@ -63,13 +68,13 @@ export default function Mail ({}) {
 
         <div className='mail-body'>
           <div className='mail-body-header'>
-            <h2 className=''>Subject</h2>
+            <h2 className=''>{selectedMail.subject}</h2>
             <MdLabelImportant color={'orange'} size={28} />
-            <p className='mail-title'>Title</p>
-            <p className='mail-time'>10pm</p>
+            <p className='mail-title'>{selectedMail.title}</p>
+            <p className='mail-time'>{selectedMail.time}</p>
           </div>
           <div className='mail-body-message'>
-            <p>This is a message</p>
+            <p>{selectedMail.description}</p>
           </div>
         </div>
       </div>

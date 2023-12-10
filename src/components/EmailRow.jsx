@@ -3,13 +3,17 @@ import { IconButton, Checkbox } from '@mui/material'
 import { CiStar } from 'react-icons/ci'
 import { MdLabelImportant } from 'react-icons/md'
 import {Navigate, useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { setSelectedMail } from '../features/mailSlice';
 
 export default function EmailRow ({ title, subject, description, time, id }) {
 
     const navigation = useNavigate();
+
+    const dispatch = useDispatch();
   return (
     <>
-      <div onClick={() => navigation('/mail')} className='email-row'>
+      <div onClick={() => {navigation('/mail');dispatch(setSelectedMail({title,subject,time,id,description}))}} className='email-row'>
         <div className='email-row-options'>
           <Checkbox />
           <IconButton>
